@@ -1,24 +1,33 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { ChevronDown, Code, Github, Linkedin, Mail, Music, Twitter } from "lucide-react"
-import Link from "next/link"
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import {
+  ChevronDown,
+  Code,
+  Github,
+  Linkedin,
+  Mail,
+  Music,
+  Twitter,
+} from "lucide-react";
+import Link from "next/link";
 
-import { Button } from "@/components/ui/button"
-import { ChessEasterEgg } from "@/components/chess-easter-egg"
-import { CommandMenu } from "@/components/command-menu"
-import { InteractiveBackground } from "@/components/interactive-background"
-import { MusicVisualizer } from "@/components/music-visualizer"
-import { ProjectShowcase } from "@/components/project-showcase"
-import { SkillsGlobe } from "@/components/skills-globe"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { TrekMap } from "@/components/trek-map"
+import { Button } from "@/components/ui/button";
+import { ChessEasterEgg } from "@/components/chess-easter-egg";
+import { CommandMenu } from "@/components/command-menu";
+import { InteractiveBackground } from "@/components/interactive-background";
+import { MusicVisualizer } from "@/components/music-visualizer";
+import { ProjectShowcase } from "@/components/project-showcase";
+import { SkillsGlobe } from "@/components/skills-globe";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { TrekMap } from "@/components/trek-map";
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState("hero")
-  const [showEasterEgg, setShowEasterEgg] = useState(false)
-  const [konami, setKonami] = useState<string[]>([])
+  const [activeSection, setActiveSection] = useState("hero");
+  const [showEasterEgg, setShowEasterEgg] = useState(false);
+  const [konami, setKonami] = useState<string[]>([]);
   const konamiCode = [
     "ArrowUp",
     "ArrowUp",
@@ -30,47 +39,57 @@ export default function Home() {
     "ArrowRight",
     "b",
     "a",
-  ]
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["hero", "about", "projects", "skills", "interests", "contact"]
-      const scrollPosition = window.scrollY + 300
+      const sections = [
+        "hero",
+        "about",
+        "projects",
+        "skills",
+        "interests",
+        "contact",
+      ];
+      const scrollPosition = window.scrollY + 300;
 
       for (const section of sections) {
-        const element = document.getElementById(section)
+        const element = document.getElementById(section);
         if (element) {
-          const offsetTop = element.offsetTop
-          const offsetHeight = element.offsetHeight
+          const offsetTop = element.offsetTop;
+          const offsetHeight = element.offsetHeight;
 
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section)
-            break
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
+            setActiveSection(section);
+            break;
           }
         }
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      const newKonami = [...konami, e.key]
+      const newKonami = [...konami, e.key];
       if (newKonami.length > konamiCode.length) {
-        newKonami.shift()
+        newKonami.shift();
       }
-      setKonami(newKonami)
+      setKonami(newKonami);
 
       if (newKonami.join(",") === konamiCode.join(",")) {
-        setShowEasterEgg(true)
+        setShowEasterEgg(true);
       }
-    }
+    };
 
-    window.addEventListener("keydown", handleKeyDown)
-    return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [konami])
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [konami]);
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-background via-background to-lavender-900/5">
@@ -79,28 +98,32 @@ export default function Home() {
 
       {/* Navigation Dots */}
       <div className="fixed z-50 flex-col items-center hidden transform -translate-y-1/2 md:flex right-8 top-1/2">
-        {["hero", "about", "projects", "skills", "interests", "contact"].map((section) => (
-          <Link
-            key={section}
-            href={`#${section}`}
-            className="relative my-2 group"
-            onClick={(e) => {
-              e.preventDefault()
-              document.getElementById(section)?.scrollIntoView({ behavior: "smooth" })
-            }}
-          >
-            <div
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                activeSection === section
-                  ? "bg-lavender-500 scale-125"
-                  : "bg-lavender-300/50 hover:bg-lavender-400/70 dark:bg-lavender-700/50 dark:hover:bg-lavender-600/70"
-              }`}
-            ></div>
-            <span className="absolute left-0 px-2 py-1 ml-6 text-sm font-medium transition-all duration-300 scale-0 rounded opacity-0 bg-lavender-100 text-lavender-900 dark:bg-lavender-900 dark:text-lavender-100 whitespace-nowrap group-hover:opacity-100 group-hover:scale-100">
-              {section.charAt(0).toUpperCase() + section.slice(1)}
-            </span>
-          </Link>
-        ))}
+        {["hero", "about", "projects", "skills", "interests", "contact"].map(
+          (section) => (
+            <Link
+              key={section}
+              href={`#${section}`}
+              className="relative my-2 group"
+              onClick={(e) => {
+                e.preventDefault();
+                document
+                  .getElementById(section)
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              <div
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  activeSection === section
+                    ? "bg-lavender-500 scale-125"
+                    : "bg-lavender-300/50 hover:bg-lavender-400/70 dark:bg-lavender-700/50 dark:hover:bg-lavender-600/70"
+                }`}
+              ></div>
+              <span className="absolute left-0 px-2 py-1 ml-6 text-sm font-medium transition-all duration-300 scale-0 rounded opacity-0 bg-lavender-100 text-lavender-900 dark:bg-lavender-900 dark:text-lavender-100 whitespace-nowrap group-hover:opacity-100 group-hover:scale-100">
+                {section.charAt(0).toUpperCase() + section.slice(1)}
+              </span>
+            </Link>
+          )
+        )}
       </div>
 
       {/* Header */}
@@ -118,7 +141,9 @@ export default function Home() {
             size="sm"
             className="hidden md:flex"
             onClick={() => {
-              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+              document
+                .getElementById("contact")
+                ?.scrollIntoView({ behavior: "smooth" });
             }}
           >
             Get in Touch
@@ -128,9 +153,9 @@ export default function Home() {
             size="icon"
             className="md:hidden"
             onClick={() => {
-              const menu = document.getElementById("mobile-menu")
+              const menu = document.getElementById("mobile-menu");
               if (menu) {
-                menu.classList.toggle("translate-x-full")
+                menu.classList.toggle("translate-x-full");
               }
             }}
           >
@@ -141,7 +166,12 @@ export default function Home() {
               stroke="currentColor"
               className="w-6 h-6"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             </svg>
           </Button>
         </div>
@@ -158,9 +188,9 @@ export default function Home() {
             size="icon"
             className="self-end"
             onClick={() => {
-              const menu = document.getElementById("mobile-menu")
+              const menu = document.getElementById("mobile-menu");
               if (menu) {
-                menu.classList.toggle("translate-x-full")
+                menu.classList.toggle("translate-x-full");
               }
             }}
           >
@@ -171,23 +201,39 @@ export default function Home() {
               stroke="currentColor"
               className="w-6 h-6"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           </Button>
           <div className="flex flex-col items-start mt-8 space-y-6">
-            {["hero", "about", "projects", "skills", "interests", "contact"].map((section) => (
+            {[
+              "hero",
+              "about",
+              "projects",
+              "skills",
+              "interests",
+              "contact",
+            ].map((section) => (
               <Link
                 key={section}
                 href={`#${section}`}
                 className={`text-lg font-medium transition-colors ${
-                  activeSection === section ? "text-lavender-500" : "text-muted-foreground hover:text-foreground"
+                  activeSection === section
+                    ? "text-lavender-500"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
                 onClick={(e) => {
-                  e.preventDefault()
-                  document.getElementById(section)?.scrollIntoView({ behavior: "smooth" })
-                  const menu = document.getElementById("mobile-menu")
+                  e.preventDefault();
+                  document
+                    .getElementById(section)
+                    ?.scrollIntoView({ behavior: "smooth" });
+                  const menu = document.getElementById("mobile-menu");
                   if (menu) {
-                    menu.classList.toggle("translate-x-full")
+                    menu.classList.toggle("translate-x-full");
                   }
                 }}
               >
@@ -197,19 +243,31 @@ export default function Home() {
           </div>
           <div className="flex justify-center mt-auto mb-8 space-x-4">
             <Button variant="ghost" size="icon" asChild>
-              <Link href="https://github.com/sulav2060" target="_blank" rel="noopener noreferrer">
+              <Link
+                href="https://github.com/sulav2060"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Github className="w-5 h-5" />
                 <span className="sr-only">GitHub</span>
               </Link>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <Link href="https://linkedin.com/in/sulav-acharya" target="_blank" rel="noopener noreferrer">
+              <Link
+                href="https://linkedin.com/in/sulav-acharya"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Linkedin className="w-5 h-5" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <Link href="https://twitter.com/sulav2060" target="_blank" rel="noopener noreferrer">
+              <Link
+                href="https://twitter.com/sulav2060"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Twitter className="w-5 h-5" />
                 <span className="sr-only">Twitter</span>
               </Link>
@@ -219,7 +277,10 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section id="hero" className="relative flex items-center justify-center min-h-screen pt-16">
+      <section
+        id="hero"
+        className="relative flex items-center justify-center min-h-screen pt-16"
+      >
         <div className="container px-4 mx-auto">
           <div className="grid items-center grid-cols-1 gap-12 md:grid-cols-2">
             <motion.div
@@ -235,14 +296,17 @@ export default function Home() {
                 </span>
               </h1>
               <p className="max-w-md mt-6 text-lg text-muted-foreground">
-                Crafting digital experiences with code, creativity, and a dash of chess strategy.
+                Crafting digital experiences with code, creativity, and a dash
+                of chess strategy.
               </p>
               <div className="flex flex-wrap justify-center gap-4 mt-8 md:justify-start">
                 <Button
                   size="lg"
                   className="bg-lavender-600 hover:bg-lavender-700"
                   onClick={() => {
-                    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
+                    document
+                      .getElementById("projects")
+                      ?.scrollIntoView({ behavior: "smooth" });
                   }}
                 >
                   View My Work
@@ -251,7 +315,9 @@ export default function Home() {
                   variant="outline"
                   size="lg"
                   onClick={() => {
-                    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+                    document
+                      .getElementById("contact")
+                      ?.scrollIntoView({ behavior: "smooth" });
                   }}
                 >
                   Get In Touch
@@ -259,19 +325,31 @@ export default function Home() {
               </div>
               <div className="flex justify-center mt-8 space-x-4 md:justify-start">
                 <Button variant="ghost" size="icon" asChild>
-                  <Link href="https://github.com/sulav2060" target="_blank" rel="noopener noreferrer">
+                  <Link
+                    href="https://github.com/sulav2060"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Github className="w-5 h-5" />
                     <span className="sr-only">GitHub</span>
                   </Link>
                 </Button>
                 <Button variant="ghost" size="icon" asChild>
-                  <Link href="https://linkedin.com/in/sulav-acharya" target="_blank" rel="noopener noreferrer">
+                  <Link
+                    href="https://linkedin.com/in/sulav-acharya"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Linkedin className="w-5 h-5" />
                     <span className="sr-only">LinkedIn</span>
                   </Link>
                 </Button>
                 <Button variant="ghost" size="icon" asChild>
-                  <Link href="https://twitter.com/sulav2060" target="_blank" rel="noopener noreferrer">
+                  <Link
+                    href="https://twitter.com/sulav2060"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Twitter className="w-5 h-5" />
                     <span className="sr-only">Twitter</span>
                   </Link>
@@ -286,9 +364,11 @@ export default function Home() {
             >
               <div className="relative w-64 h-64 overflow-hidden rounded-full sm:w-80 sm:h-80 md:w-96 md:h-96 bg-gradient-to-br from-lavender-500 to-red-500 p-1">
                 <div className="absolute inset-1 bg-background rounded-full flex items-center justify-center">
-                  <img
-                    src="/pp.jpg?height=400&width=400"
+                  <Image
+                    src="/pp.jpg"
                     alt="Sulav Acharya"
+                    width={400}
+                    height={400}
                     className="object-cover w-full h-full rounded-full"
                   />
                 </div>
@@ -305,7 +385,9 @@ export default function Home() {
           <ChevronDown
             className="w-8 h-8 text-lavender-500"
             onClick={() => {
-              document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })
+              document
+                .getElementById("about")
+                ?.scrollIntoView({ behavior: "smooth" });
             }}
           />
         </div>
@@ -338,9 +420,10 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold">Background</h3>
               <p className="mt-4 text-muted-foreground">
-                I'm a software engineer currently pursuing my Bachelor's degree in Software Engineering at Pokhara
-                University, expected to graduate in 12 months. I have experience working with development teams and
-                building complex applications.
+                I&#39;m a software engineer currently pursuing my Bachelor&#39;s
+                degree in Software Engineering at Pokhara University, expected
+                to graduate in 12 months. I have experience working with
+                development teams and building complex applications.
               </p>
             </motion.div>
 
@@ -356,9 +439,10 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold">Current Focus</h3>
               <p className="mt-4 text-muted-foreground">
-                I'm currently developing a SaaS-based fantasy sports platform focusing on cricket and football. The
-                system supports small tournaments with manually uploaded data. I'm also working on freelance projects
-                through platforms like Freelancer.com.
+                I'm currently developing a SaaS-based fantasy sports platform
+                focusing on cricket and football. The system supports small
+                tournaments with manually uploaded data. I'm also working on
+                freelance projects through platforms like Freelancer.com.
               </p>
             </motion.div>
 
@@ -374,9 +458,10 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold">Beyond Coding</h3>
               <p className="mt-4 text-muted-foreground">
-                When I'm not coding, you might find me contemplating my next move in chess, strumming my guitar, or
-                planning my next trekking adventure. I'm also a polyglot in the making — fluent in English, Nepali, and
-                Hindi, with Spanish as my current linguistic challenge.
+                When I&#39;m not coding, you might find me contemplating my next
+                move in chess, strumming my guitar, or planning my next trekking
+                adventure. I&#39;m learning Spanish as my current
+                linguistic challenge.
               </p>
             </motion.div>
           </div>
@@ -392,15 +477,18 @@ export default function Home() {
               <div className="flex-1 mb-6 md:mb-0 md:mr-6">
                 <h3 className="text-xl font-semibold">My Journey</h3>
                 <p className="mt-4 text-muted-foreground">
-                  My journey in software development began with a curiosity about how digital products work. This led me
-                  to explore various programming languages and frameworks, eventually specializing in web development.
-                  Along the way, I've developed a passion for creating intuitive user experiences and solving complex
-                  problems through code.
+                  My journey in software development began with a curiosity
+                  about how digital products work. This led me to explore
+                  various programming languages and frameworks, eventually
+                  specializing in web development. Along the way, I've developed
+                  a passion for creating intuitive user experiences and solving
+                  complex problems through code.
                 </p>
                 <p className="mt-4 text-muted-foreground">
-                  I believe in continuous learning and staying updated with the latest technologies. My approach
-                  combines technical expertise with creative thinking to deliver solutions that not only work well but
-                  also provide a delightful user experience.
+                  I believe in continuous learning and staying updated with the
+                  latest technologies. My approach combines technical expertise
+                  with creative thinking to deliver solutions that not only work
+                  well but also provide a delightful user experience.
                 </p>
               </div>
               <div className="flex-shrink-0 w-full md:w-1/3">
@@ -408,7 +496,8 @@ export default function Home() {
                   <h4 className="text-lg font-medium">Quick Facts</h4>
                   <ul className="mt-4 space-y-2">
                     <li className="flex items-start">
-                      <span className="mr-2">🎓</span> Software Engineering student
+                      <span className="mr-2">🎓</span> Software Engineering
+                      student
                     </li>
                     <li className="flex items-start">
                       <span className="mr-2">💻</span> Full-stack developer
@@ -437,7 +526,10 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 bg-lavender-50/50 dark:bg-lavender-900/5">
+      <section
+        id="projects"
+        className="py-20 bg-lavender-50/50 dark:bg-lavender-900/5"
+      >
         <div className="container px-4 mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -449,8 +541,8 @@ export default function Home() {
             <h2 className="text-3xl font-bold sm:text-4xl">My Projects</h2>
             <div className="w-20 h-1 mx-auto mt-4 rounded bg-lavender-500"></div>
             <p className="mt-6 text-lg text-muted-foreground">
-              Here are some of the projects I've been working on. Each one represents a unique challenge and learning
-              opportunity.
+              Here are some of the projects I've been working on. Each one
+              represents a unique challenge and learning opportunity.
             </p>
           </motion.div>
 
@@ -471,8 +563,9 @@ export default function Home() {
             <h2 className="text-3xl font-bold sm:text-4xl">Technical Skills</h2>
             <div className="w-20 h-1 mx-auto mt-4 rounded bg-lavender-500"></div>
             <p className="mt-6 text-lg text-muted-foreground">
-              My technical toolkit includes a variety of languages, frameworks, and technologies that I use to build
-              robust and scalable applications.
+              My technical toolkit includes a variety of languages, frameworks,
+              and technologies that I use to build robust and scalable
+              applications.
             </p>
           </motion.div>
 
@@ -496,7 +589,10 @@ export default function Home() {
                     <span className="text-sm text-muted-foreground">60%</span>
                   </div>
                   <div className="w-full h-2 mt-2 rounded-full bg-lavender-200 dark:bg-lavender-800">
-                    <div className="h-2 rounded-full bg-lavender-500" style={{ width: "90%" }}></div>
+                    <div
+                      className="h-2 rounded-full bg-lavender-500"
+                      style={{ width: "90%" }}
+                    ></div>
                   </div>
                 </div>
                 <div>
@@ -505,7 +601,10 @@ export default function Home() {
                     <span className="text-sm text-muted-foreground">80%</span>
                   </div>
                   <div className="w-full h-2 mt-2 rounded-full bg-lavender-200 dark:bg-lavender-800">
-                    <div className="h-2 rounded-full bg-lavender-500" style={{ width: "80%" }}></div>
+                    <div
+                      className="h-2 rounded-full bg-lavender-500"
+                      style={{ width: "80%" }}
+                    ></div>
                   </div>
                 </div>
                 <div>
@@ -514,7 +613,10 @@ export default function Home() {
                     <span className="text-sm text-muted-foreground">60%</span>
                   </div>
                   <div className="w-full h-2 mt-2 rounded-full bg-lavender-200 dark:bg-lavender-800">
-                    <div className="h-2 rounded-full bg-lavender-500" style={{ width: "60%" }}></div>
+                    <div
+                      className="h-2 rounded-full bg-lavender-500"
+                      style={{ width: "60%" }}
+                    ></div>
                   </div>
                 </div>
                 <div>
@@ -523,7 +625,10 @@ export default function Home() {
                     <span className="text-sm text-muted-foreground">85%</span>
                   </div>
                   <div className="w-full h-2 mt-2 rounded-full bg-lavender-200 dark:bg-lavender-800">
-                    <div className="h-2 rounded-full bg-lavender-500" style={{ width: "85%" }}></div>
+                    <div
+                      className="h-2 rounded-full bg-lavender-500"
+                      style={{ width: "85%" }}
+                    ></div>
                   </div>
                 </div>
               </div>
@@ -544,7 +649,10 @@ export default function Home() {
                     <span className="text-sm text-muted-foreground">95%</span>
                   </div>
                   <div className="w-full h-2 mt-2 rounded-full bg-red-200 dark:bg-red-800">
-                    <div className="h-2 rounded-full bg-red-500" style={{ width: "95%" }}></div>
+                    <div
+                      className="h-2 rounded-full bg-red-500"
+                      style={{ width: "95%" }}
+                    ></div>
                   </div>
                 </div>
                 <div>
@@ -553,7 +661,10 @@ export default function Home() {
                     <span className="text-sm text-muted-foreground">90%</span>
                   </div>
                   <div className="w-full h-2 mt-2 rounded-full bg-red-200 dark:bg-red-800">
-                    <div className="h-2 rounded-full bg-red-500" style={{ width: "90%" }}></div>
+                    <div
+                      className="h-2 rounded-full bg-red-500"
+                      style={{ width: "90%" }}
+                    ></div>
                   </div>
                 </div>
                 <div>
@@ -562,7 +673,10 @@ export default function Home() {
                     <span className="text-sm text-muted-foreground">85%</span>
                   </div>
                   <div className="w-full h-2 mt-2 rounded-full bg-red-200 dark:bg-red-800">
-                    <div className="h-2 rounded-full bg-red-500" style={{ width: "85%" }}></div>
+                    <div
+                      className="h-2 rounded-full bg-red-500"
+                      style={{ width: "85%" }}
+                    ></div>
                   </div>
                 </div>
                 <div>
@@ -571,7 +685,10 @@ export default function Home() {
                     <span className="text-sm text-muted-foreground">85%</span>
                   </div>
                   <div className="w-full h-2 mt-2 rounded-full bg-red-200 dark:bg-red-800">
-                    <div className="h-2 rounded-full bg-red-500" style={{ width: "85%" }}></div>
+                    <div
+                      className="h-2 rounded-full bg-red-500"
+                      style={{ width: "85%" }}
+                    ></div>
                   </div>
                 </div>
               </div>
@@ -614,7 +731,10 @@ export default function Home() {
       </section>
 
       {/* Interests Section */}
-      <section id="interests" className="py-20 bg-lavender-50/50 dark:bg-lavender-900/5">
+      <section
+        id="interests"
+        className="py-20 bg-lavender-50/50 dark:bg-lavender-900/5"
+      >
         <div className="container px-4 mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -626,8 +746,8 @@ export default function Home() {
             <h2 className="text-3xl font-bold sm:text-4xl">Beyond Coding</h2>
             <div className="w-20 h-1 mx-auto mt-4 rounded bg-lavender-500"></div>
             <p className="mt-6 text-lg text-muted-foreground">
-              Life isn't all about code. Here are some of the things I'm passionate about outside of software
-              development.
+              Life isn't all about code. Here are some of the things I'm
+              passionate about outside of software development.
             </p>
           </motion.div>
 
@@ -665,8 +785,9 @@ export default function Home() {
               <div className="p-6 bg-white dark:bg-background">
                 <h3 className="text-xl font-semibold">Chess</h3>
                 <p className="mt-2 text-muted-foreground">
-                  I enjoy the strategic depth of chess, where each move requires careful planning and foresight. The
-                  game has taught me patience and the importance of thinking several steps ahead.
+                  I enjoy the strategic depth of chess, where each move requires
+                  careful planning and foresight. The game has taught me
+                  patience and the importance of thinking several steps ahead.
                 </p>
               </div>
             </motion.div>
@@ -686,8 +807,10 @@ export default function Home() {
               <div className="p-6 bg-white dark:bg-background">
                 <h3 className="text-xl font-semibold">Music & Guitar</h3>
                 <p className="mt-2 text-muted-foreground">
-                  Music is my creative outlet. I play the guitar and enjoy exploring different genres. There's something
-                  magical about creating melodies and rhythms that can express emotions without words.
+                  Music is my creative outlet. I play the guitar and enjoy
+                  exploring different genres. There's something magical about
+                  creating melodies and rhythms that can express emotions
+                  without words.
                 </p>
                 {/* <button
                   className="px-4 py-2 mt-4 text-sm font-medium transition-colors rounded-full bg-red-100 text-red-700 hover:bg-red-200 dark:bg-red-900/30 dark:text-red-300 dark:hover:bg-red-800/50"
@@ -739,8 +862,10 @@ export default function Home() {
               <div className="p-6 bg-white dark:bg-background">
                 <h3 className="text-xl font-semibold">Trekking & Travel</h3>
                 <p className="mt-2 text-muted-foreground">
-                  Exploring the natural beauty of Nepal through trekking is one of my favorite activities. There's
-                  nothing quite like the sense of achievement when reaching a summit after a challenging climb.
+                  Exploring the natural beauty of Nepal through trekking is one
+                  of my favorite activities. There's nothing quite like the
+                  sense of achievement when reaching a summit after a
+                  challenging climb.
                 </p>
                 {/* <button
                   className="px-4 py-2 mt-4 text-sm font-medium transition-colors rounded-full bg-yellow-100 text-yellow-700 hover:bg-yellow-200 dark:bg-yellow-900/30 dark:text-yellow-300 dark:hover:bg-yellow-800/50"
@@ -783,8 +908,10 @@ export default function Home() {
               <div className="p-6 bg-white dark:bg-background">
                 <h3 className="text-xl font-semibold">Movies & Anime</h3>
                 <p className="mt-2 text-muted-foreground">
-                  I'm a fan of storytelling in all its forms. Whether it's a thought-provoking film or an engaging anime
-                  series, I appreciate narratives that challenge perspectives and spark imagination.
+                  I'm a fan of storytelling in all its forms. Whether it's a
+                  thought-provoking film or an engaging anime series, I
+                  appreciate narratives that challenge perspectives and spark
+                  imagination.
                 </p>
               </div>
             </motion.div>
@@ -818,8 +945,10 @@ export default function Home() {
               <div className="p-6 bg-white dark:bg-background">
                 <h3 className="text-xl font-semibold">Languages</h3>
                 <p className="mt-2 text-muted-foreground">
-                  I'm fluent in English, Nepali, and Hindi, and I'm currently learning Spanish. Language learning opens
-                  doors to new cultures and ways of thinking, enriching my perspective on the world.
+                  I'm fluent in English, Nepali, and Hindi, and I'm currently
+                  learning Spanish. Language learning opens doors to new
+                  cultures and ways of thinking, enriching my perspective on the
+                  world.
                 </p>
               </div>
             </motion.div>
@@ -839,8 +968,10 @@ export default function Home() {
               <div className="p-6 bg-white dark:bg-background">
                 <h3 className="text-xl font-semibold">Random Research</h3>
                 <p className="mt-2 text-muted-foreground">
-                  I have an insatiable curiosity that leads me to research random interesting topics. From quantum
-                  physics to ancient history, I enjoy diving deep into subjects that catch my attention.
+                  I have an insatiable curiosity that leads me to research
+                  random interesting topics. From quantum physics to ancient
+                  history, I enjoy diving deep into subjects that catch my
+                  attention.
                 </p>
               </div>
             </motion.div>
@@ -869,7 +1000,8 @@ export default function Home() {
             <h2 className="text-3xl font-bold sm:text-4xl">Get In Touch</h2>
             <div className="w-20 h-1 mx-auto mt-4 rounded bg-lavender-500"></div>
             <p className="mt-6 text-lg text-muted-foreground">
-              Interested in working together or just want to say hello? Feel free to reach out!
+              Interested in working together or just want to say hello? Feel
+              free to reach out!
             </p>
           </motion.div>
 
@@ -883,8 +1015,9 @@ export default function Home() {
             >
               <h3 className="text-2xl font-semibold">Contact Information</h3>
               <p className="mt-4 text-muted-foreground">
-                Feel free to reach out through any of these channels. I'm always open to discussing new projects,
-                creative ideas, or opportunities to be part of your vision.
+                Feel free to reach out through any of these channels. I'm always
+                open to discussing new projects, creative ideas, or
+                opportunities to be part of your vision.
               </p>
 
               <div className="mt-8 space-y-6">
@@ -957,7 +1090,10 @@ export default function Home() {
                 <form className="mt-6 space-y-6">
                   <div className="grid gap-6 md:grid-cols-2">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium">
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium"
+                      >
                         Name
                       </label>
                       <input
@@ -968,7 +1104,10 @@ export default function Home() {
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium"
+                      >
                         Email
                       </label>
                       <input
@@ -980,7 +1119,10 @@ export default function Home() {
                     </div>
                   </div>
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium">
+                    <label
+                      htmlFor="subject"
+                      className="block text-sm font-medium"
+                    >
                       Subject
                     </label>
                     <input
@@ -991,7 +1133,10 @@ export default function Home() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium">
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium"
+                    >
                       Message
                     </label>
                     <textarea
@@ -1001,7 +1146,9 @@ export default function Home() {
                       placeholder="Your message..."
                     ></textarea>
                   </div>
-                  <Button className="w-full bg-lavender-600 hover:bg-lavender-700">Send Message</Button>
+                  <Button className="w-full bg-lavender-600 hover:bg-lavender-700">
+                    Send Message
+                  </Button>
                 </form>
               </div>
             </motion.div>
@@ -1018,7 +1165,9 @@ export default function Home() {
             <span className="text-lavender-300">A</span>
             <span className="text-red-400">.</span>
           </div>
-          <p className="mt-4">© {new Date().getFullYear()} Sulav Acharya. All rights reserved.</p>
+          <p className="mt-4">
+            © {new Date().getFullYear()} Sulav Acharya. All rights reserved.
+          </p>
           <div className="flex justify-center mt-6 space-x-6">
             <a
               href="https://github.com/sulav2060"
@@ -1049,14 +1198,18 @@ export default function Home() {
             </a>
           </div>
           {/* <p className="mt-8 text-sm text-lavender-400"> */}
-            {/* Crafted with code and creativity.  */}
-            {/* <span className="text-xs">Psst... try the Konami code: ↑↑↓↓←→←→BA</span> */}
+          {/* Crafted with code and creativity.  */}
+          {/* <span className="text-xs">Psst... try the Konami code: ↑↑↓↓←→←→BA</span> */}
           {/* </p> */}
         </div>
       </footer>
 
       {/* Easter Egg */}
-      <AnimatePresence>{showEasterEgg && <ChessEasterEgg onClose={() => setShowEasterEgg(false)} />}</AnimatePresence>
+      <AnimatePresence>
+        {showEasterEgg && (
+          <ChessEasterEgg onClose={() => setShowEasterEgg(false)} />
+        )}
+      </AnimatePresence>
     </div>
-  )
+  );
 }

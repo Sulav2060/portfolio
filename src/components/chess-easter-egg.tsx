@@ -24,7 +24,7 @@ export function ChessEasterEgg({ onClose }: ChessEasterEggProps) {
 
   const [selectedPiece, setSelectedPiece] = useState<{ row: number; col: number } | null>(null)
   const [message, setMessage] = useState("You found the chess easter egg! Make a move.")
-  const [gameState, setGameState] = useState<"playing" | "checkmate" | "stalemate">("playing")
+  const [gameState] = useState<"playing" | "checkmate" | "stalemate">("playing")
 
   const getPieceSymbol = (piece: string) => {
     const symbols: Record<string, string> = {
