@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "@/components/theme-provider";
 
@@ -21,21 +21,24 @@ export function SkillsGlobe() {
   const animationRef = useRef<number | null>(null);
   const { theme } = useTheme();
 
-  const skillsList = [
-    { name: "PHP", level: 60 },
-    { name: "Laravel", level: 65 },
-    { name: "MongoDB", level: 80 },
-    { name: "React", level: 90 },
-    { name: "nextJs", level: 90 },
-    { name: "Tailwind CSS", level: 90 },
-    { name: "JavaScript", level: 85 },
-    { name: "HTML/CSS", level: 95 },
-    { name: "Git", level: 80 },
-    { name: "MySQL", level: 75 },
-    { name: "Django", level: 60 },
-    { name: "UI/UX", level: 70 },
-    { name: "RESTful APIs", level: 85 },
-  ];
+  const skillsList = useMemo(
+    () => [
+      { name: "PHP", level: 60 },
+      { name: "Laravel", level: 65 },
+      { name: "MongoDB", level: 80 },
+      { name: "React", level: 90 },
+      { name: "nextJs", level: 90 },
+      { name: "Tailwind CSS", level: 90 },
+      { name: "JavaScript", level: 85 },
+      { name: "HTML/CSS", level: 95 },
+      { name: "Git", level: 80 },
+      { name: "MySQL", level: 75 },
+      { name: "Django", level: 60 },
+      { name: "UI/UX", level: 70 },
+      { name: "RESTful APIs", level: 85 },
+    ],
+    []
+  );
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -86,7 +89,7 @@ export function SkillsGlobe() {
     const animate = () => {
       angle += 0.0002;
       setSkills((prevSkills) =>
-        prevSkills.map((skill, i) => {
+        prevSkills.map((skill) => {
           // Rotate around Y axis
           const x = skill.x * Math.cos(angle) + skill.z * Math.sin(angle);
           const z = -skill.x * Math.sin(angle) + skill.z * Math.cos(angle);
@@ -127,7 +130,7 @@ export function SkillsGlobe() {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [dimensions]);
+  }, [dimensions, skillsList]);
 
   // Helper function to map a value from one range to another
   const mapRange = (
@@ -166,12 +169,6 @@ export function SkillsGlobe() {
               scale: skill.scale,
               opacity: skill.opacity,
               color: `hsl(${hue}, ${saturation}%, ${lightness}%)`,
-            }}
-            animate={{
-              x: x - dimensions.width / 2,
-              y: y - dimensions.height / 2,
-              scale: skill.scale,
-              opacity: skill.opacity,
             }}
             transition={{ duration: 0.1 }}
           >

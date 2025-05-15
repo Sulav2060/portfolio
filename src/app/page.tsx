@@ -439,10 +439,11 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold">Current Focus</h3>
               <p className="mt-4 text-muted-foreground">
-                I'm currently developing a SaaS-based fantasy sports platform
-                focusing on cricket and football. The system supports small
-                tournaments with manually uploaded data. I'm also working on
-                freelance projects through platforms like Freelancer.com.
+                I&#39;m currently developing a SaaS-based fantasy sports
+                platform focusing on cricket and football. The system supports
+                small tournaments with manually uploaded data. I&#39;m also
+                working on freelance projects through platforms like
+                Freelancer.com.
               </p>
             </motion.div>
 
@@ -460,8 +461,8 @@ export default function Home() {
               <p className="mt-4 text-muted-foreground">
                 When I&#39;m not coding, you might find me contemplating my next
                 move in chess, strumming my guitar, or planning my next trekking
-                adventure. I&#39;m learning Spanish as my current
-                linguistic challenge.
+                adventure. I&#39;m learning Spanish as my current linguistic
+                challenge.
               </p>
             </motion.div>
           </div>
@@ -480,7 +481,7 @@ export default function Home() {
                   My journey in software development began with a curiosity
                   about how digital products work. This led me to explore
                   various programming languages and frameworks, eventually
-                  specializing in web development. Along the way, I've developed
+                  specializing in web development. Along the way, Ive developed
                   a passion for creating intuitive user experiences and solving
                   complex problems through code.
                 </p>
@@ -541,7 +542,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold sm:text-4xl">My Projects</h2>
             <div className="w-20 h-1 mx-auto mt-4 rounded bg-lavender-500"></div>
             <p className="mt-6 text-lg text-muted-foreground">
-              Here are some of the projects I've been working on. Each one
+              Here are some of the projects I&#39;ve been working on. Each one
               represents a unique challenge and learning opportunity.
             </p>
           </motion.div>
@@ -746,7 +747,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold sm:text-4xl">Beyond Coding</h2>
             <div className="w-20 h-1 mx-auto mt-4 rounded bg-lavender-500"></div>
             <p className="mt-6 text-lg text-muted-foreground">
-              Life isn't all about code. Here are some of the things I'm
+              Life isn&#39;t all about code. Here are some of the things I&#39;m
               passionate about outside of software development.
             </p>
           </motion.div>
@@ -808,8 +809,8 @@ export default function Home() {
                 <h3 className="text-xl font-semibold">Music & Guitar</h3>
                 <p className="mt-2 text-muted-foreground">
                   Music is my creative outlet. I play the guitar and enjoy
-                  exploring different genres. There's something magical about
-                  creating melodies and rhythms that can express emotions
+                  exploring different genres. There&#39;s something magical
+                  about creating melodies and rhythms that can express emotions
                   without words.
                 </p>
                 {/* <button
@@ -863,7 +864,7 @@ export default function Home() {
                 <h3 className="text-xl font-semibold">Trekking & Travel</h3>
                 <p className="mt-2 text-muted-foreground">
                   Exploring the natural beauty of Nepal through trekking is one
-                  of my favorite activities. There's nothing quite like the
+                  of my favorite activities. There&#39;s nothing quite like the
                   sense of achievement when reaching a summit after a
                   challenging climb.
                 </p>
@@ -908,9 +909,9 @@ export default function Home() {
               <div className="p-6 bg-white dark:bg-background">
                 <h3 className="text-xl font-semibold">Movies & Anime</h3>
                 <p className="mt-2 text-muted-foreground">
-                  I'm a fan of storytelling in all its forms. Whether it's a
-                  thought-provoking film or an engaging anime series, I
-                  appreciate narratives that challenge perspectives and spark
+                  I&#39;m a fan of storytelling in all its forms. Whether
+                  it&#39;s a thought-provoking film or an engaging anime series,
+                  I appreciate narratives that challenge perspectives and spark
                   imagination.
                 </p>
               </div>
@@ -945,10 +946,10 @@ export default function Home() {
               <div className="p-6 bg-white dark:bg-background">
                 <h3 className="text-xl font-semibold">Languages</h3>
                 <p className="mt-2 text-muted-foreground">
-                  I'm fluent in English, Nepali, and Hindi, and I'm currently
-                  learning Spanish. Language learning opens doors to new
-                  cultures and ways of thinking, enriching my perspective on the
-                  world.
+                  I&#39;m fluent in English, Nepali, and Hindi, and I&#39;m
+                  currently learning Spanish. Language learning opens doors to
+                  new cultures and ways of thinking, enriching my perspective on
+                  the world.
                 </p>
               </div>
             </motion.div>
@@ -1015,8 +1016,8 @@ export default function Home() {
             >
               <h3 className="text-2xl font-semibold">Contact Information</h3>
               <p className="mt-4 text-muted-foreground">
-                Feel free to reach out through any of these channels. I'm always
-                open to discussing new projects, creative ideas, or
+                Feel free to reach out through any of these channels. I&#39;m
+                always open to discussing new projects, creative ideas, or
                 opportunities to be part of your vision.
               </p>
 

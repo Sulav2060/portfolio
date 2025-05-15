@@ -1,10 +1,11 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { ArrowLeft, ArrowRight, ExternalLink, Github } from "lucide-react"
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowLeft, ArrowRight, ExternalLink, Github } from "lucide-react";
+import Image from "next/image";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 const projects = [
   {
@@ -41,18 +42,18 @@ const projects = [
     github: "#",
     color: "from-green-500 to-teal-600",
   },
-]
+];
 
 export function ProjectShowcase() {
-  const [currentProject, setCurrentProject] = useState(0)
+  const [currentProject, setCurrentProject] = useState(0);
 
   const nextProject = () => {
-    setCurrentProject((prev) => (prev === projects.length - 1 ? 0 : prev + 1))
-  }
+    setCurrentProject((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
+  };
 
   const prevProject = () => {
-    setCurrentProject((prev) => (prev === 0 ? projects.length - 1 : prev - 1))
-  }
+    setCurrentProject((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
+  };
 
   return (
     <div className="mt-16">
@@ -66,11 +67,15 @@ export function ProjectShowcase() {
             transition={{ duration: 0.5 }}
             className="relative"
           >
-            <div className={`absolute inset-0 bg-gradient-to-r ${projects[currentProject].color} opacity-90`}></div>
+            <div
+              className={`absolute inset-0 bg-gradient-to-r ${projects[currentProject].color} opacity-90`}
+            ></div>
             <div className="relative grid gap-8 p-8 md:grid-cols-2 md:p-12">
               <div className="flex flex-col justify-between text-white">
                 <div>
-                  <h3 className="text-2xl font-bold md:text-3xl">{projects[currentProject].title}</h3>
+                  <h3 className="text-2xl font-bold md:text-3xl">
+                    {projects[currentProject].title}
+                  </h3>
                   {projects[currentProject].status && (
                     <span className="inline-block px-3 py-1 mt-2 text-xs font-medium rounded-full bg-white/20">
                       {projects[currentProject].status}
@@ -89,14 +94,32 @@ export function ProjectShowcase() {
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-4 mt-8">
-                  <Button asChild variant="secondary" size="sm" className="gap-2">
-                    <a href={projects[currentProject].link} target="_blank" rel="noopener noreferrer">
+                  <Button
+                    asChild
+                    variant="secondary"
+                    size="sm"
+                    className="gap-2"
+                  >
+                    <a
+                      href={projects[currentProject].link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <ExternalLink className="w-4 h-4" />
                       View Project
                     </a>
                   </Button>
-                  <Button asChild variant="outline" size="sm" className="gap-2 bg-transparent border-white text-white">
-                    <a href={projects[currentProject].github} target="_blank" rel="noopener noreferrer">
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="sm"
+                    className="gap-2 bg-transparent border-white text-white"
+                  >
+                    <a
+                      href={projects[currentProject].github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <Github className="w-4 h-4" />
                       Source Code
                     </a>
@@ -105,7 +128,7 @@ export function ProjectShowcase() {
               </div>
               <div className="flex items-center justify-center">
                 <div className="overflow-hidden rounded-lg shadow-lg">
-                  <img
+                  <Image
                     src={projects[currentProject].image || "/placeholder.svg"}
                     alt={projects[currentProject].title}
                     className="object-cover w-full h-64 md:h-80"
@@ -139,12 +162,14 @@ export function ProjectShowcase() {
           <button
             key={index}
             className={`w-3 h-3 rounded-full transition-all ${
-              currentProject === index ? "bg-lavender-500 scale-125" : "bg-lavender-200 dark:bg-lavender-800"
+              currentProject === index
+                ? "bg-lavender-500 scale-125"
+                : "bg-lavender-200 dark:bg-lavender-800"
             }`}
             onClick={() => setCurrentProject(index)}
           ></button>
         ))}
       </div>
     </div>
-  )
+  );
 }
