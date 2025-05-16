@@ -130,6 +130,8 @@ export function ProjectShowcase() {
                 <div className="overflow-hidden rounded-lg shadow-lg">
                   <Image
                     src={projects[currentProject].image || "/placeholder.svg"}
+                    width={800}
+                    height={600}
                     alt={projects[currentProject].title}
                     className="object-cover w-full h-64 md:h-80"
                   />

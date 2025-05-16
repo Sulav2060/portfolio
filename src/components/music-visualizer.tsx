@@ -32,8 +32,9 @@ export function MusicVisualizer() {
 
     // Create audio context and analyser
     if (!audioContextRef.current) {
+      // Fix: Remove 'any' by using the global window webkitAudioContext declaration
       audioContextRef.current = new (window.AudioContext ||
-        (window as any).webkitAudioContext)();
+        window.webkitAudioContext)();
       analyserRef.current = audioContextRef.current.createAnalyser();
       analyserRef.current.fftSize = 256;
     }

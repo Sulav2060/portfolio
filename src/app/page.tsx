@@ -1,5 +1,5 @@
 "use client";
-
+import React from "react";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
@@ -28,18 +28,21 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState("hero");
   const [showEasterEgg, setShowEasterEgg] = useState(false);
   const [konami, setKonami] = useState<string[]>([]);
-  const konamiCode = [
-    "ArrowUp",
-    "ArrowUp",
-    "ArrowDown",
-    "ArrowDown",
-    "ArrowLeft",
-    "ArrowRight",
-    "ArrowLeft",
-    "ArrowRight",
-    "b",
-    "a",
-  ];
+  const konamiCode = React.useMemo(
+    () => [
+      "ArrowUp",
+      "ArrowUp",
+      "ArrowDown",
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowLeft",
+      "ArrowRight",
+      "b",
+      "a",
+    ],
+    []
+  );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -89,7 +92,7 @@ export default function Home() {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [konami]);
+  }, [konami, konamiCode]);
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-background via-background to-lavender-900/5">

@@ -1,54 +1,60 @@
-"use client"
+"use client";
+import React from "react";
+import { useEffect, useState } from "react";
+import { Command } from "lucide-react";
 
-import { useEffect, useState } from "react"
-import { Command } from "lucide-react"
-
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 export function CommandMenu() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [searchTerm, setSearchTerm] = useState("")
-  const [filteredCommands, setFilteredCommands] = useState<string[]>([])
+  const [isOpen, setIsOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredCommands, setFilteredCommands] = useState<string[]>([]);
 
-  const commands = [
-    "About",
-    "Projects",
-    "Skills",
-    "Interests",
-    "Contact",
-    "Toggle Theme",
-    // "Show Easter Egg",
-    "Play Music",
-    "View Trek Map",
-  ]
+  // Memoize the commands array so its reference is stable and doesn't trigger useEffect unnecessarily
+  const commands = React.useMemo(
+    () => [
+      "About",
+      "Projects",
+      "Skills",
+      "Interests",
+      "Contact",
+      "Toggle Theme",
+      // "Show Easter Egg",
+      "Play Music",
+      "View Trek Map",
+    ],
+    []
+  );
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
-        e.preventDefault()
-        setIsOpen((prev) => !prev)
+        e.preventDefault();
+        setIsOpen((prev) => !prev);
       }
 
       if (e.key === "Escape") {
-        setIsOpen(false)
+        setIsOpen(false);
       }
-    }
+    };
 
-    window.addEventListener("keydown", handleKeyDown)
-    return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [])
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   useEffect(() => {
     if (searchTerm) {
-      const filtered = commands.filter((cmd) => cmd.toLowerCase().includes(searchTerm.toLowerCase()))
-      setFilteredCommands(filtered)
+      const filtered = commands.filter((cmd) =>
+        cmd.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredCommands(filtered);
     } else {
-      setFilteredCommands(commands)
+      setFilteredCommands(commands);
     }
-  }, [searchTerm])
+  }, [searchTerm, commands]);
 
   const handleCommandClick = (command: string) => {
-    setIsOpen(false)
+    setIsOpen(false);
 
     // Handle command actions
     switch (command) {
@@ -57,11 +63,15 @@ export function CommandMenu() {
       case "Skills":
       case "Interests":
       case "Contact":
-        document.getElementById(command.toLowerCase())?.scrollIntoView({ behavior: "smooth" })
-        break
+        document
+          .getElementById(command.toLowerCase())
+          ?.scrollIntoView({ behavior: "smooth" });
+        break;
       case "Toggle Theme":
-        document.querySelector("[aria-label='Toggle theme']")?.dispatchEvent(new MouseEvent("click"))
-        break
+        document
+          .querySelector("[aria-label='Toggle theme']")
+          ?.dispatchEvent(new MouseEvent("click"));
+        break;
       case "Show Easter Egg":
         // Simulate Konami code
         const konamiCode = [
@@ -75,28 +85,30 @@ export function CommandMenu() {
           "ArrowRight",
           "b",
           "a",
-        ]
+        ];
         konamiCode.forEach((key) => {
-          window.dispatchEvent(new KeyboardEvent("keydown", { key }))
-        })
-        break
+          window.dispatchEvent(new KeyboardEvent("keydown", { key }));
+        });
+        break;
       case "Play Music":
-        const visualizer = document.getElementById("music-visualizer")
+        const visualizer = document.getElementById("music-visualizer");
         if (visualizer) {
-          visualizer.classList.remove("hidden")
-          const playButton = visualizer.querySelector("button")
-          playButton?.click()
+          visualizer.classList.remove("hidden");
+          const playButton = visualizer.querySelector("button");
+          playButton?.click();
         }
-        break
+        break;
       case "View Trek Map":
-        const trekMap = document.getElementById("trek-map")
+        const trekMap = document.getElementById("trek-map");
         if (trekMap) {
-          trekMap.classList.remove("hidden")
-          document.getElementById("interests")?.scrollIntoView({ behavior: "smooth" })
+          trekMap.classList.remove("hidden");
+          document
+            .getElementById("interests")
+            ?.scrollIntoView({ behavior: "smooth" });
         }
-        break
+        break;
     }
-  }
+  };
 
   return (
     <>
@@ -108,7 +120,9 @@ export function CommandMenu() {
       >
         <Command className="w-4 h-4" />
         <span className="text-xs">Press</span>
-        <kbd className="px-1.5 py-0.5 text-xs border rounded-md bg-muted">⌘K</kbd>
+        <kbd className="px-1.5 py-0.5 text-xs border rounded-md bg-muted">
+          ⌘K
+        </kbd>
       </Button>
 
       {isOpen && (
@@ -124,7 +138,9 @@ export function CommandMenu() {
                 onChange={(e) => setSearchTerm(e.target.value)}
                 autoFocus
               />
-              <kbd className="px-1.5 py-0.5 ml-2 text-xs border rounded-md bg-muted">Esc</kbd>
+              <kbd className="px-1.5 py-0.5 ml-2 text-xs border rounded-md bg-muted">
+                Esc
+              </kbd>
             </div>
             <div className="py-2 max-h-[300px] overflow-y-auto">
               {filteredCommands.map((command) => (
@@ -137,12 +153,14 @@ export function CommandMenu() {
                 </button>
               ))}
               {filteredCommands.length === 0 && (
-                <div className="px-4 py-2 text-sm text-muted-foreground">No commands found</div>
+                <div className="px-4 py-2 text-sm text-muted-foreground">
+                  No commands found
+                </div>
               )}
             </div>
           </div>
         </div>
       )}
     </>
-  )
+  );
 }
