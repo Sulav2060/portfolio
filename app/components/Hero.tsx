@@ -1,3 +1,6 @@
+import React from 'react';
+import Image from "next/image";
+import { Flame } from "lucide-react";
 
 export default function HeroSection() {
   return (
@@ -27,7 +30,7 @@ export default function HeroSection() {
           <div className="lg:col-span-7 space-y-8">
             {/* Vertical line accent */}
             <div className="flex items-start gap-6">
-              <div className="hidden sm:block w-px h-32 bg-linear-to-b from-(--accent) to-transparent" />
+              <div className="hidden sm:block w-px h-32 bg-linear-to-b from-[#DA291C] to-transparent" />
               <div className="space-y-6">
                 <p className="font-mono text-xs tracking-[0.3em] text-(--primary) uppercase">Software Developer</p>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-(--foreground) text-balance">
@@ -44,7 +47,7 @@ export default function HeroSection() {
             <div className="flex flex-wrap gap-4 pt-4">
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-(--primary) text-slate-900 font-bold text-sm tracking-wide hover:bg-(--primary)/90 transition-colors rounded-full"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#DA291C] text-white font-bold text-sm tracking-wide hover:bg-[#DA291C]/90 transition-colors rounded-full shadow-[0_0_20px_rgba(218,41,28,0.3)]"
               >
                 Get in Touch
                 <span className="text-xs">→</span>
@@ -58,24 +61,22 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right column - abstract geometric element */}
+          {/* Right column - Profile Image */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
             <div className="relative w-64 h-64 lg:w-80 lg:h-80">
-              {/* Layered squares representing analytical thinking */}
-              <div className="absolute inset-4 border border-(--card-border) rotate-3 transition-transform duration-500 hover:rotate-6" />
-              <div className="absolute inset-8 border border-(--accent)/30 -rotate-3 transition-transform duration-500 hover:-rotate-6" />
-              <div className="absolute inset-12 bg-(--secondary)/10 backdrop-blur-sm" />
-
-              {/* Chess-inspired grid within */}
-              <div className="absolute inset-16 grid grid-cols-4 gap-px">
-                {Array.from({ length: 16 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className={`transition-colors duration-300 hover:bg-(--accent)/20 ${
-                      (Math.floor(i / 4) + (i % 4)) % 2 === 0 ? "bg-white/5" : "bg-transparent"
-                    }`}
-                  />
-                ))}
+              {/* Decorative rings */}
+              <div className="absolute inset-0 rounded-full border border-[#DA291C]/20 animate-[spin_10s_linear_infinite]" />
+              <div className="absolute -inset-4 rounded-full border border-(--primary)/20 animate-[spin_15s_linear_infinite_reverse]" />
+              
+              {/* Image container */}
+              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-[#DA291C]/20 shadow-[0_0_40px_rgba(218,41,28,0.2)]">
+                <Image
+                  src="/SulavAcharya.jpg"
+                  alt="Sulav Acharya"
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
             </div>
           </div>

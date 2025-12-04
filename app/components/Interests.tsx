@@ -23,9 +23,9 @@ const interests = [
   },
   {
     icon: Film,
-    title: "Movies & Anime",
+    title: "Cinema & Sports",
     description:
-      "I'm a fan of storytelling in all its forms. Whether it's a thought-provoking film or an engaging anime series, I appreciate narratives that challenge perspectives and spark imagination.",
+      "I'm a cinephile who loves movies, series, and anime of different genres. Additionally, I'm a Red Devil passionately supporting Manchester United.",
   },
   {
     icon: Languages,
