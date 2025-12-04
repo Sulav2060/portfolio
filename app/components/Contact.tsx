@@ -5,7 +5,7 @@ const contactLinks = [
   {
     icon: Mail,
     label: "Email",
-    value: "sulav2060@gmail.com",
+    value: "Sulav2060@gmail.com",
     href: "mailto:sulav2060@gmail.com",
   },
   {
@@ -36,10 +36,10 @@ export default function ContactSection() {
             open to discussing new projects, creative ideas, or opportunities to
             be part of your vision.
           </p>
-          <div className="flex items-center gap-2 text-sm text-slate-500">
+          {/* <div className="flex items-center gap-2 text-sm text-slate-500">
             <span className="w-8 h-px bg-(--accent)" />
             <span>Based in Nepal</span>
-          </div>
+          </div> */}
         </div>
 
         {/* Right column - contact links */}

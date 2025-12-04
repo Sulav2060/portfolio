@@ -8,6 +8,7 @@ export default function Mascot() {
   const [isDragging, setIsDragging] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [isClient, setIsClient] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
   const positionRef = useRef(position);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const scrollHandlerRef = useRef<(() => void) | null>(null);
@@ -19,7 +20,26 @@ export default function Mascot() {
   useEffect(() => {
     setIsClient(true);
     // Set initial position to bottom-left after mount to access window
-    setPosition({ x: 34, y: window.innerHeight - 120 });
+    setPosition({ x: 36, y: window.innerHeight - 120 });
+
+    const handleCenterMascot = () => {
+      const centerX = window.innerWidth / 2 - 48; // 96px width / 2
+      const centerY = window.innerHeight / 2 - 48; // 96px height / 2
+      setPosition({ x: centerX, y: centerY });
+      
+      // Cancel any pending snap
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+      if (scrollHandlerRef.current) {
+        window.removeEventListener('scroll', scrollHandlerRef.current);
+        scrollHandlerRef.current = null;
+      }
+    };
+
+    window.addEventListener('mascot-center', handleCenterMascot);
+    return () => window.removeEventListener('mascot-center', handleCenterMascot);
   }, []);
 
   useEffect(() => {
@@ -125,6 +145,14 @@ export default function Mascot() {
     });
   };
 
+  const handleMouseEnter = () => {
+    setShowTooltip(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowTooltip(false);
+  };
+
   if (!isClient) return null;
 
   return (
@@ -139,8 +167,18 @@ export default function Mascot() {
         transition: isDragging ? "none" : "left 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), top 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
       }}
       onMouseDown={handleMouseDown}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       className="group hidden md:block"
     >
+      {/* Tooltip */}
+      {showTooltip && (
+        <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-48 p-3 bg-slate-900/90 backdrop-blur-md text-white text-xs text-center rounded-xl border border-white/10 shadow-xl animate-in fade-in zoom-in duration-200 pointer-events-none z-50">
+          I do nothing but you can drag me around
+          <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-slate-900/90 border-r border-b border-white/10 rotate-45"></div>
+        </div>
+      )}
+
       {/* Floating animation wrapper */}
       <div className="animate-float hover:pause">
         <div className="relative w-24 h-24 drop-shadow-2xl transition-transform hover:scale-110">

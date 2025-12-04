@@ -23,9 +23,9 @@ export default function Home() {
       <InterestsSection />
       <Contact />
       
-      <footer className="py-8 text-center text-slate-500 text-sm">
-        <p>© {new Date().getFullYear()} Sulav Acharya. Crafted with Next.js & Tailwind.</p>
-      </footer>
+      {/* <footer className="py-8 text-center text-slate-500 text-sm">
+        <p>© 2025 Sulav Acharya. Crafted with Next.js & Tailwind.</p>
+      </footer> */}
     </main>
   );
 }
