@@ -43,12 +43,27 @@ export default function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setSubmitted(true);
-    setFormState({ name: "", email: "", message: "" });
-    setTimeout(() => setSubmitted(false), 3000);
+    
+    try {
+      const response = await fetch("https://formspree.io/f/xdkqdllk", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(formState)
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setFormState({ name: "", email: "", message: "" });
+        setTimeout(() => setSubmitted(false), 5000);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -108,8 +123,8 @@ export default function ContactSection() {
               type="submit"
               disabled={isSubmitting || submitted}
               className={`w-full py-4 rounded-xl font-bold text-white transition-all duration-300 flex items-center justify-center gap-2 ${submitted
-                  ? "bg-green-500 hover:bg-green-600"
-                  : "bg-[#DA291C] hover:bg-[#DA291C]/90 shadow-[0_0_20px_rgba(218,41,28,0.3)] hover:shadow-[0_0_30px_rgba(218,41,28,0.5)]"
+                ? "bg-green-500 hover:bg-green-600"
+                : "bg-[#DA291C] hover:bg-[#DA291C]/90 shadow-[0_0_20px_rgba(218,41,28,0.3)] hover:shadow-[0_0_30px_rgba(218,41,28,0.5)]"
                 } disabled:opacity-70 disabled:cursor-not-allowed`}
             >
               {submitted ? (
