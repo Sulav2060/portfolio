@@ -174,7 +174,7 @@ export default function Mascot() {
       {/* Tooltip */}
       {showTooltip && (
         <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-48 p-3 bg-slate-900/90 backdrop-blur-md text-white text-xs text-center rounded-xl border border-white/10 shadow-xl animate-in fade-in zoom-in duration-200 pointer-events-none z-50">
-          I do nothing but you can drag me around
+          Cool little mascot that does nothing
           <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-slate-900/90 border-r border-b border-white/10 rotate-45"></div>
         </div>
       )}
