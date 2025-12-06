@@ -71,8 +71,8 @@ export default function HeroSection() {
       </div>
 
       {/* Mountains Layer 2 (Front) */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 sm:h-32 md:h-48 lg:h-64 text-slate-900 z-10">
-        <MountainLineArt preserveAspectRatio="none" className="drop-shadow-2xl" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 sm:h-32 md:h-48 lg:h-64 text-slate-700 z-10">
+        <MountainLineArt preserveAspectRatio="none" className="drop-shadow-2xl" gradient />
       </div>
 
     </section>
@@ -92,7 +92,8 @@ function SocialLink({ href, icon }: { href: string; icon: React.ReactNode }) {
   )
 }
 
-function MountainLineArt({ className, preserveAspectRatio = "xMidYMax slice" }: { className?: string, preserveAspectRatio?: string }) {
+function MountainLineArt({ className, preserveAspectRatio = "xMidYMax slice", gradient }: { className?: string, preserveAspectRatio?: string, gradient?: boolean }) {
+  const id = React.useId();
   return (
     <svg
       viewBox="0 0 1200 200"
@@ -101,17 +102,26 @@ function MountainLineArt({ className, preserveAspectRatio = "xMidYMax slice" }: 
       className={`w-full h-full ${className}`}
       preserveAspectRatio={preserveAspectRatio}
     >
+      {gradient && (
+        <defs>
+          <linearGradient id={id} x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="currentColor" />
+            <stop offset="100%" stopColor="var(--background)" />
+          </linearGradient>
+        </defs>
+      )}
+
       {/* Main mountain range */}
       <path
         d="M0 200 L100 120 L180 160 L280 80 L360 140 L450 40 L520 100 L600 60 L680 120 L780 30 L860 90 L940 50 L1020 110 L1100 70 L1200 130 L1200 200 Z"
-        fill="currentColor"
-        className="opacity-30"
+        fill={gradient ? `url(#${id})` : "currentColor"}
+        className="opacity-10"
       />
 
       {/* Secondary peaks */}
       <path
         d="M0 200 L150 140 L250 170 L380 100 L480 150 L580 90 L680 140 L800 80 L900 130 L1000 100 L1100 150 L1200 120 L1200 200 Z"
-        fill="currentColor"
+        fill={gradient ? `url(#${id})` : "currentColor"}
         className="opacity-20"
       />
 
@@ -120,7 +130,7 @@ function MountainLineArt({ className, preserveAspectRatio = "xMidYMax slice" }: 
         d="M0 180 L200 130 L400 160 L600 100 L800 140 L1000 110 L1200 150"
         stroke="currentColor"
         strokeWidth="1"
-        className="opacity-40"
+        className="opacity-10"
         fill="none"
       />
     </svg>
