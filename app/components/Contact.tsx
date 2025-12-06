@@ -68,7 +68,7 @@ export default function ContactSection() {
 
   return (
     <Section title="Get In Touch" id="contact">
-      <div className="absolute right-0 top-0 bottom-0 w-48 opacity-5 pointer-events-none">
+      <div className="absolute right-5 top-0 bottom-0 w-48 opacity-2 sm:opacity-5 pointer-events-none">
         <GuitarFretArt />
       </div>
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 relative z-10">

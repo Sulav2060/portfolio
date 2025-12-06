@@ -1,107 +1,105 @@
 import React from "react";
 import Image from "next/image";
-import { Flame } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail, Terminal } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Geometric grid background */}
-      <div className="absolute inset-0 opacity-[0.03]">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, currentColor 1px, transparent 1px),
-              linear-gradient(to bottom, currentColor 1px, transparent 1px)
-            `,
-            backgroundSize: "60px 60px",
-          }}
-        />
-      </div>
+    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-(--background) pt-16 sm:pt-0">
 
-      {/* Mountain line art decoration */}
-      <div className="absolute bottom-0 left-0 right-0 h-64 opacity-10 text-(--primary)">
-        <MountainLineArt />
-      </div>
+      {/* Subtle Grid */}
+   <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[64px_64px] z- opacity-50 sm:opacity-100"></div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 py-32">
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
-          {/* Left column - main content */}
-          <div className="lg:col-span-7 space-y-8">
-            {/* Vertical line accent */}
-            <div className="flex items-start gap-6">
-              <div className="hidden sm:block w-px h-32 bg-linear-to-b from-[#DA291C] to-transparent" />
-              <div className="space-y-6">
-                <p className="font-mono text-xs tracking-[0.3em] text-(--primary) uppercase">
-                  Software Developer
-                </p>
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-(--foreground) text-balance">
-                  Sulav
-                  <span className="block text-gradient font-bold text-[#DA291C]">Acharya</span>
-                </h1>
-                <p className="text-lg text-slate-400 max-w-md leading-relaxed">
-                  Building intuitive digital experiences through code,
-                  curiosity, and creative problem-solving.
-                </p>
-              </div>
-            </div>
+      <div className="container mx-auto px-6 relative z-20 grid lg:grid-cols-2 gap-12 items-center pb-12">
+        
+        {/* Left: Text Content */}
+        <div className="space-y-8 text-center lg:text-left order-2 lg:order-1">
 
-            {/* CTA */}
-            <div className="flex flex-wrap gap-4 pt-4">
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-(--primary) text-slate-900 font-bold text-sm tracking-wide hover:bg-(--primary)/90 transition-colors rounded-full"
-              >
-                Get in Touch
-                <span className="text-xs">→</span>
-              </a>
-              <a
-                href="#journey"
-                className="inline-flex items-center gap-2 px-6 py-3 border border-(--card-border) text-sm tracking-wide hover:bg-white/5 transition-colors rounded-full text-slate-300"
-              >
-                Learn More
-              </a>
-            </div>
+
+          <div className="space-y-4">
+            <h2 className="text-slate-400 text-xl sm:text-2xl font-light tracking-wide">
+              Hello, I'm
+            </h2>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-(--foreground)">
+              Sulav <span className="text-transparent bg-clip-text bg-linear-to-r from-(--primary) to-(--secondary)">Acharya</span>
+            </h1>
+            <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+              Software Developer transforming ideas into elegant, scalable solutions.
+              Passionate about clean code and user-centric design.
+            </p>
           </div>
 
-          {/* Right column - Profile Image */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="relative w-64 h-64 lg:w-80 lg:h-80">
-              {/* Decorative rings */}
-              <div className="absolute inset-0 rounded-full border border-[#DA291C]/20 animate-[spin_10s_linear_infinite]" />
-              <div className="absolute -inset-4 rounded-full border border-(--primary)/20 animate-[spin_15s_linear_infinite_reverse]" />
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
+            <a href="#projects" className="group px-8 py-3 bg-sky-500 text-white font-bold rounded-full hover:bg-sky-400 transition-all shadow-[0_0_20px_rgba(56,189,248,0.3)] hover:shadow-[0_0_30px_rgba(56,189,248,0.5)] flex items-center gap-2">
+              View Projects
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a href="#contact" className="px-8 py-3 bg-slate-900 text-slate-300 font-medium rounded-full hover:bg-slate-800 transition-colors border border-slate-800">
+              Contact Me
+            </a>
+          </div>
 
-              {/* Image container */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-[#DA291C]/20 shadow-[0_0_40px_rgba(218,41,28,0.2)]">
-                <Image
-                  src="/SulavAcharya.jpg"
-                  alt="Sulav Acharya"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
+          <div className="flex items-center justify-center lg:justify-start gap-6 pt-4 text-slate-500">
+            <SocialLink href="https://github.com/Sulav2060" icon={<Github size={22} />} />
+            <SocialLink href="https://linkedin.com" icon={<Linkedin size={22} />} />
+            <SocialLink href="mailto:hello@example.com" icon={<Mail size={22} />} />
+          </div>
+        </div>
+
+        {/* Right: Visual / Profile */}
+        <div className="relative flex justify-center lg:justify-end order-1 lg:order-2">
+          {/* Profile Image Container */}
+          <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[400px] lg:h-[400px] group">
+            {/* Decorative Elements */}
+            <div className="absolute -inset-1 bg-linear-to-r from-sky-500 to-indigo-500 rounded-full opacity-30  blur-2xl " />
+
+            <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-slate-800/50 shadow-2xl">
+              <Image
+                src="/SulavAcharya.jpg"
+                alt="Sulav Acharya"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                priority
+              />
             </div>
           </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500">
-        <span className="font-mono text-xs tracking-widest">SCROLL</span>
-        <div className="w-px h-8 bg-linear-to-b from-slate-500 to-transparent" />
+      {/* Mountains Layer 1 (Back) */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 sm:h-48 md:h-64 lg:h-80 text-slate-800/40 z-0">
+        <MountainLineArt preserveAspectRatio="none" />
       </div>
+
+      {/* Mountains Layer 2 (Front) */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 sm:h-32 md:h-48 lg:h-64 text-slate-900 z-10">
+        <MountainLineArt preserveAspectRatio="none" className="drop-shadow-2xl" />
+      </div>
+
     </section>
   );
 }
-function MountainLineArt() {
+
+function SocialLink({ href, icon }: { href: string; icon: React.ReactNode }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="p-3 hover:text-sky-400 transition-all hover:bg-slate-800/50 rounded-full hover:scale-110"
+    >
+      {icon}
+    </a>
+  )
+}
+
+function MountainLineArt({ className, preserveAspectRatio = "xMidYMax slice" }: { className?: string, preserveAspectRatio?: string }) {
   return (
     <svg
       viewBox="0 0 1200 200"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="w-full h-full"
-      preserveAspectRatio="xMidYMax slice"
+      className={`w-full h-full ${className}`}
+      preserveAspectRatio={preserveAspectRatio}
     >
       {/* Main mountain range */}
       <path
