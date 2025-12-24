@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Home, Map, Zap, Briefcase, Heart, Mail, Grid2X2, X } from "lucide-react";
+import { Home, Map, Zap, Briefcase, Heart, Mail, Grid2X2, X, FileText } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,6 +12,7 @@ export default function Navbar() {
     { href: "#skills", label: "Skills", icon: Zap },
     { href: "#projects", label: "Projects", icon: Briefcase },
     { href: "#interests", label: "Interests", icon: Heart },
+    { href: "/resume", label: "Resume", icon: FileText },
     { href: "#contact", label: "Contact", icon: Mail },
   ];
 
