@@ -7,8 +7,25 @@ import Contact from "./components/Contact";
 import Navbar from "./components/Navbar";
 
 export default function Home() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Sulav Acharya',
+    url: 'https://sulavacharya.com',
+    jobTitle: 'Software Developer',
+    sameAs: [
+      'https://github.com/sulav2060', 
+      'https://linkedin.com/in/sulav-acharya', 
+      'https://www.freelancer.com/u/sulav2060', 
+    ],
+  }
+
   return (
     <main className="min-h-screen relative">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="glow-bg" />
 
       <Navbar />
@@ -25,4 +42,5 @@ export default function Home() {
     </main>
   );
 }
+
 

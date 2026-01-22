@@ -14,8 +14,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sulav Acharya - Portfolio",
-  description: "Software Developer Portfolio of Sulav Acharya",
+  title: {
+    default: "Sulav Acharya - Portfolio",
+    template: "%s | Sulav Acharya"
+  },
+  description: "Software Developer Portfolio of Sulav Acharya. Full Stack Developer specializing in Modern Web Technologies.",
+  keywords: ["Sulav Acharya", "Software Developer", "Portfolio", "Full Stack Developer", "Web Development", "React", "Next.js"],
+  authors: [{ name: "Sulav Acharya" }],
+  creator: "Sulav Acharya",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://sulavacharya.com",
+    title: "Sulav Acharya - Portfolio",
+    description: "Software Developer Portfolio of Sulav Acharya. Full Stack Developer specializing in Modern Web Technologies.",
+    siteName: "Sulav Acharya Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sulav Acharya - Portfolio",
+    description: "Software Developer Portfolio of Sulav Acharya",
+    creator: "@sulav2060", 
+  },
   icons: {
     icon: [
       { url: '/favicon.ico' },
@@ -27,6 +47,17 @@ export const metadata: Metadata = {
     ],
   },
   manifest: '/site.webmanifest',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({
