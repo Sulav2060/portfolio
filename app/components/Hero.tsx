@@ -29,7 +29,7 @@ export default function HeroSection() {
           </div>
 
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
-            <a href="#projects" className="group px-8 py-3 bg-sky-500 text-white font-bold rounded-full hover:bg-sky-400 transition-all shadow-[0_0_20px_rgba(56,189,248,0.3)] hover:shadow-[0_0_30px_rgba(56,189,248,0.5)] flex items-center gap-2">
+            <a href="#projects" className="group px-8 py-3 bg-sky-600 text-white font-bold rounded-full hover:bg-sky-500 transition-all shadow-[0_0_20px_rgba(56,189,248,0.3)] hover:shadow-[0_0_30px_rgba(56,189,248,0.5)] flex items-center gap-2">
               View Projects
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
@@ -39,9 +39,9 @@ export default function HeroSection() {
           </div>
 
           <div className="flex items-center justify-center lg:justify-start gap-6 pt-4 text-slate-500">
-            <SocialLink href="https://github.com/Sulav2060" icon={<Github size={22} />} />
-            <SocialLink href="https://linkedin.com" icon={<Linkedin size={22} />} />
-            <SocialLink href="mailto:hello@example.com" icon={<Mail size={22} />} />
+            <SocialLink href="https://github.com/Sulav2060" icon={<Github size={22} />} label="GitHub Profile" />
+            <SocialLink href="https://linkedin.com" icon={<Linkedin size={22} />} label="LinkedIn Profile" />
+            <SocialLink href="mailto:hello@example.com" icon={<Mail size={22} />} label="Email Contact" />
           </div>
         </div>
 
@@ -79,10 +79,11 @@ export default function HeroSection() {
   );
 }
 
-function SocialLink({ href, icon }: { href: string; icon: React.ReactNode }) {
+function SocialLink({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) {
   return (
     <a
       href={href}
+      aria-label={label}
       target="_blank"
       rel="noopener noreferrer"
       className="p-3 hover:text-sky-400 transition-all hover:bg-slate-800/50 rounded-full hover:scale-110"

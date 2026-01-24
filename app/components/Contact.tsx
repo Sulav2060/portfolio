@@ -157,12 +157,12 @@ export default function ContactSection() {
                 <link.icon size={18} strokeWidth={1.5} />
               </div>
               <div className="flex-1">
-                <span className="font-mono text-xs text-slate-500 uppercase tracking-widest group-hover:text-[#DA291C] transition-colors">
+                <span className="font-mono text-xs text-slate-400 uppercase tracking-widest group-hover:text-[#DA291C] transition-colors">
                   {link.label}
                 </span>
                 <p className="text-sm text-(--foreground) mt-1">{link.value}</p>
               </div>
-              <span className="text-slate-500 group-hover:text-[#DA291C] transition-colors">
+              <span className="text-slate-400 group-hover:text-[#DA291C] transition-colors">
                 →
               </span>
             </a>
