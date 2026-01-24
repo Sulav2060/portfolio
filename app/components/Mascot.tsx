@@ -183,7 +183,7 @@ export default function Mascot() {
       <div className="animate-float hover:pause">
         <div className="relative w-24 h-24 drop-shadow-2xl transition-transform hover:scale-110">
             <Image
-              src="/RedDevilOnePiece.png"
+              src="/RedDevilOnePiece.webp"
               alt="Mascot"
               width={96}
               height={96}
