@@ -11,7 +11,7 @@ export default function Home() {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Sulav Acharya',
-    url: 'https://sulavacharya.com',
+    url: 'https://sulavacharya.name.np',
     jobTitle: 'Software Developer',
     sameAs: [
       'https://github.com/sulav2060', 

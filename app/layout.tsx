@@ -20,13 +20,13 @@ export const metadata: Metadata = {
     template: "%s | Sulav Acharya"
   },
   description: "Software Developer Portfolio of Sulav Acharya. Full Stack Developer specializing in Modern Web Technologies.",
-  keywords: ["Sulav Acharya", "Software Developer", "Portfolio", "Full Stack Developer", "Web Development", "React", "Next.js"],
+  keywords: ["Sulav Acharya", "Sulav2060", "Sulav Pokhara", "Software Developer", "Portfolio", "Full Stack Developer", "Web Development", "React", "Next.js"],
   authors: [{ name: "Sulav Acharya" }],
   creator: "Sulav Acharya",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://sulavacharya.com",
+    url: "https://sulavacharya.name.np",
     title: "Sulav Acharya - Portfolio",
     description: "Software Developer Portfolio of Sulav Acharya. Full Stack Developer specializing in Modern Web Technologies.",
     siteName: "Sulav Acharya Portfolio",

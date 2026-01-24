@@ -29,7 +29,7 @@ export default function HeroSection() {
           </div>
 
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
-            <a href="#projects" className="group px-8 py-3 bg-sky-600 text-white font-bold rounded-full hover:bg-sky-500 transition-all shadow-[0_0_20px_rgba(56,189,248,0.3)] hover:shadow-[0_0_30px_rgba(56,189,248,0.5)] flex items-center gap-2">
+            <a href="#projects" className="group px-8 py-3 bg-sky-700 text-white font-bold rounded-full hover:bg-sky-600 transition-all shadow-[0_0_20px_rgba(56,189,248,0.3)] hover:shadow-[0_0_30px_rgba(56,189,248,0.5)] flex items-center gap-2">
               View Projects
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
@@ -54,11 +54,13 @@ export default function HeroSection() {
 
             <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-slate-800/50 shadow-2xl">
               <Image
-                src="/SulavAcharya.jpg"
+                src="/SulavAcharya.webp"
                 alt="Sulav Acharya"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 priority
+                fetchPriority="high"
+                loading="eager"
               />
             </div>
           </div>
