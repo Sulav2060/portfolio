@@ -16,26 +16,42 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Sulav Acharya - Portfolio",
+    default: "Sulav Acharya - Software Engineer",
     template: "%s | Sulav Acharya"
   },
-  description: "Software Developer Portfolio of Sulav Acharya. Full Stack Developer specializing in Modern Web Technologies.",
-  keywords: ["Sulav Acharya", "Sulav2060", "Sulav Pokhara", "Software Developer", "Portfolio", "Full Stack Developer", "Web Development", "React", "Next.js"],
-  authors: [{ name: "Sulav Acharya" }],
+  description: "Portfolio of Sulav Acharya, a Software Engineer and Full Stack Developer. Discover projects, skills, and experience of Sulav Acharya in modern web development.",
+  keywords: [
+    "Sulav Acharya",
+    "Sulav Acharya Nepal",
+    "Sulav Acharya Software Engineer",
+    "Sulav2060",
+    "Sulav Pokhara",
+    "Software Engineer",
+    "Software Developer",
+    "Full Stack Developer",
+    "Web Developer Nepal",
+    "React Developer",
+    "Next.js Developer"
+  ],
+  authors: [{ name: "Sulav Acharya", url: "https://sulavacharya.name.np" }],
   creator: "Sulav Acharya",
+  publisher: "Sulav Acharya",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://sulavacharya.name.np",
-    title: "Sulav Acharya - Portfolio",
-    description: "Software Developer Portfolio of Sulav Acharya. Full Stack Developer specializing in Modern Web Technologies.",
+    title: "Sulav Acharya - Software Engineer",
+    description: "Explore the portfolio of Sulav Acharya, a dedicated Software Engineer specializing in building exceptional digital experiences.",
     siteName: "Sulav Acharya Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sulav Acharya - Portfolio",
-    description: "Software Developer Portfolio of Sulav Acharya",
-    creator: "@sulav2060", 
+    title: "Sulav Acharya - Software Engineer",
+    description: "Software Engineer Portfolio of Sulav Acharya",
+    creator: "@sulav2060",
+  },
+  alternates: {
+    canonical: "https://sulavacharya.name.np",
   },
   icons: {
     icon: [

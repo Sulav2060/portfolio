@@ -12,7 +12,7 @@ export default function Home() {
     '@type': 'Person',
     name: 'Sulav Acharya',
     url: 'https://sulavacharya.name.np',
-    jobTitle: 'Software Developer',
+    jobTitle: 'Software Engineer',
     sameAs: [
       'https://github.com/sulav2060', 
       'https://linkedin.com/in/sulav-acharya', 
