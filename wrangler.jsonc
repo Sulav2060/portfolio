@@ -2,15 +2,12 @@
   "name": "portfolio",
   "compatibility_date": "2025-12-05",
   "assets": {
-    "directory": "./out"
+    "directory": "./out",
+    "not_found_handling": "404-page"
   },
   "routes": [
     {
       "pattern": "sulavacharya.name.np",
-      "custom_domain": true
-    },
-    {
-      "pattern": "www.sulavacharya.name.np",
       "custom_domain": true
     }
   ]
