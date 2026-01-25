@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Mail, Linkedin, Github, Briefcase, Send } from "lucide-react";
 import Section from "./Section";
 
@@ -8,8 +8,9 @@ const contactLinks = [
   {
     icon: Mail,
     label: "Email",
-    value: "Sulav2060@gmail.com",
-    href: "mailto:sulav2060@gmail.com",
+    value: "U3VsYXYyMDYwQGdtYWlsLmNvbQ==", 
+    href: "#",
+    isEmail: true
   },
   {
     icon: Linkedin,
@@ -32,6 +33,17 @@ const contactLinks = [
 ];
 
 export default function ContactSection() {
+  const [email, setEmail] = useState("Loading...");
+
+  useEffect(() => {
+    // Decrypt email: Sulav2060@gmail.com
+    try {
+        setEmail(atob("U3VsYXYyMDYwQGdtYWlsLmNvbQ=="));
+    } catch (e) {
+        // Fallback or silence
+    }
+  }, []);
+
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -143,13 +155,18 @@ export default function ContactSection() {
 
         {/* Right column - contact links */}
         <div className="space-y-6">
-          {contactLinks.map((link) => (
+          {contactLinks.map((link) => {
+             const isEmail = link.label === "Email";
+             const currentHref = isEmail ? (email === "Loading..." ? "#" : `mailto:${email}`) : link.href;
+             const currentValue = isEmail ? email : link.value;
+
+             return (
             <a
               key={link.label}
-              href={link.href}
-              target={link.href.startsWith("http") ? "_blank" : undefined}
+              href={currentHref}
+              target={currentHref.startsWith("http") ? "_blank" : undefined}
               rel={
-                link.href.startsWith("http") ? "noopener noreferrer" : undefined
+                currentHref.startsWith("http") ? "noopener noreferrer" : undefined
               }
               className="group flex items-center gap-4 p-4 glass-card hover:border-[#DA291C]/50 transition-all duration-300 rounded-xl"
             >
@@ -160,13 +177,14 @@ export default function ContactSection() {
                 <span className="font-mono text-xs text-slate-400 uppercase tracking-widest group-hover:text-[#DA291C] transition-colors">
                   {link.label}
                 </span>
-                <p className="text-sm text-(--foreground) mt-1">{link.value}</p>
+                <p className="text-sm text-(--foreground) mt-1">{currentValue}</p>
               </div>
               <span className="text-slate-400 group-hover:text-[#DA291C] transition-colors">
                 →
               </span>
             </a>
-          ))}
+          );
+          })}
         </div>
       </div>
     </Section>

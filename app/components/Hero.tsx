@@ -1,8 +1,18 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { ArrowRight, Github, Linkedin, Mail, Terminal } from "lucide-react";
 
 export default function HeroSection() {
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    // Decrypt email to prevent spam bots
+    // Base64: Sulav2060@gmail.com
+    setEmail(atob("U3VsYXYyMDYwQGdtYWlsLmNvbQ=="));
+  }, []);
+
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-(--background) pt-16 sm:pt-0">
 
@@ -41,7 +51,11 @@ export default function HeroSection() {
           <div className="flex items-center justify-center lg:justify-start gap-6 pt-4 text-slate-500">
             <SocialLink href="https://github.com/Sulav2060" icon={<Github size={22} />} label="GitHub Profile" />
             <SocialLink href="https://linkedin.com" icon={<Linkedin size={22} />} label="LinkedIn Profile" />
-            <SocialLink href="mailto:hello@example.com" icon={<Mail size={22} />} label="Email Contact" />
+            <SocialLink 
+              href={email ? `mailto:${email}` : "#"} 
+              icon={<Mail size={22} />} 
+              label="Email Contact" 
+            />
           </div>
         </div>
 
