@@ -33,7 +33,7 @@ export default function HeroSection() {
               Sulav <span className="text-transparent bg-clip-text bg-linear-to-r from-(--primary) to-(--secondary)">Acharya</span>
             </h1>
             <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-              Software Developer transforming ideas into elegant, scalable solutions.
+              Software Engineer transforming ideas into elegant, scalable solutions.
               Passionate about clean code and user-centric design.
             </p>
           </div>

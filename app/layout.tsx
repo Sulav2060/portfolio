@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://sulavacharya.name.np"),
   title: {
-    default: "Sulav Acharya - Software Engineer",
+    default: "Sulav Acharya | Software Engineer",
     template: "%s | Sulav Acharya"
   },
   description: "Portfolio of Sulav Acharya, a Software Engineer and Full Stack Developer. Discover projects, skills, and experience of Sulav Acharya in modern web development.",
@@ -40,13 +40,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://sulavacharya.name.np",
-    title: "Sulav Acharya - Software Engineer",
+    title: "Sulav Acharya | Software Engineer",
     description: "Explore the portfolio of Sulav Acharya, a dedicated Software Engineer specializing in building exceptional digital experiences.",
     siteName: "Sulav Acharya Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sulav Acharya - Software Engineer",
+    title: "Sulav Acharya | Software Engineer",
     description: "Software Engineer Portfolio of Sulav Acharya",
     creator: "@sulav2060",
   },
