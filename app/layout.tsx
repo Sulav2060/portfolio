@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://sulavacharya.name.np"),
   title: {
     default: "Sulav Acharya - Software Engineer",
     template: "%s | Sulav Acharya"

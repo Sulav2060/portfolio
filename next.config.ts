@@ -8,6 +8,17 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizeCss: true,
   },
+  webpack: (config, { isServer }) => {
+    // Aggressively merge chunks to reduce HTTP requests
+    if (!isServer) {
+        config.optimization.splitChunks = {
+            ...config.optimization.splitChunks,
+            minSize: 200000, 
+            maxSize: 500000,
+        };
+    }
+    return config;
+  },
 };
 
 export default nextConfig;

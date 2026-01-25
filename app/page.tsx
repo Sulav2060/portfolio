@@ -15,8 +15,9 @@ export default function Home() {
     jobTitle: 'Software Engineer',
     sameAs: [
       'https://github.com/sulav2060', 
-      'https://linkedin.com/in/sulav-acharya', 
+      'https://linkedin.com/in/sulav-acharya-8b5629169/', 
       'https://www.freelancer.com/u/sulav2060', 
+      'https://www.instagram.com/su7av_acharya/'
     ],
   }
 
