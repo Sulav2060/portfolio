@@ -14,6 +14,7 @@ export default function Home() {
     url: 'https://sulavacharya.name.np',
     jobTitle: 'Software Engineer',
     sameAs: [
+      'https://linktr.ee/sulav2060',
       'https://github.com/sulav2060', 
       'https://linkedin.com/in/sulav-acharya-8b5629169/', 
       'https://www.freelancer.com/u/sulav2060', 
