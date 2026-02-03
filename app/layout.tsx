@@ -20,8 +20,7 @@ export const metadata: Metadata = {
     default: "Sulav Acharya | Software Engineer",
     template: "%s | Sulav Acharya"
   },
-  description: "Portfolio of Sulav Acharya, a Software Engineer and Full Stack Developer. Discover projects, skills, and experience of Sulav Acharya in modern web development.",
-  keywords: [
+  description: 'Official portfolio of Sulav Acharya (sulav2060). Software Engineer specializing in React, Next.js, and Laravel. Explorer of NEPSE data and FPL SaaS developer.', keywords: [
     "Sulav Acharya",
     "Sulav2060",
     "Sulav Acharya Nepal",
@@ -37,12 +36,20 @@ export const metadata: Metadata = {
   creator: "Sulav Acharya",
   publisher: "Sulav Acharya",
   openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://sulavacharya.name.np",
-    title: "Sulav Acharya | Software Engineer",
-    description: "Explore the portfolio of Sulav Acharya, a dedicated Software Engineer specializing in building exceptional digital experiences.",
-    siteName: "Sulav Acharya Portfolio",
+    title: 'Sulav Acharya | Software Engineer',
+    description: 'Software Engineer specializing in React, Next.js, and Laravel.',
+    url: 'https://sulavacharya.name.np',
+    siteName: 'Sulav Acharya Portfolio',
+    images: [
+      {
+        url: 'https://sulavacharya.name.np/SulavAcharya.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Sulav Acharya - Software Engineer',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
   },
   twitter: {
     card: "summary_large_image",
@@ -78,6 +85,33 @@ export const metadata: Metadata = {
     },
   },
 };
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Sulav Acharya',
+  alternateName: 'sulav2060',
+  url: 'https://sulavacharya.name.np',
+  image: 'https://sulavacharya.name.np/SulavAcharya.webp',
+  jobTitle: 'Software Engineer',
+  sameAs: [
+    'https://linktr.ee/sulav2060',
+    'https://github.com/sulav2060',
+    'https://linkedin.com/in/sulav-acharya-8b5629169/',
+    'https://www.freelancer.com/u/sulav2060',
+    'https://www.instagram.com/su7av_acharya/'
+  ],
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    "name": "Pokhara University"
+  },
+
+  knowsAbout: ["Software Engineering", "React", "Next.js", "Laravel", "Full-Stack Development", "NEPSE"],
+  knowsLanguage: [
+    { "@type": "Language", "name": "English" },
+    { "@type": "Language", "name": "Nepali" }
+  ],
+  description: "Software Engineer and Full-Stack Developer specializing in React, Next.js, and Laravel. Creator of NEPSE analytics tools and FPL SaaS applications."
+}
 
 export default function RootLayout({
   children,
@@ -89,6 +123,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-V5FH4M31HM"
           strategy="afterInteractive"
