@@ -1,18 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { Home, Map, Zap, Briefcase, Heart, Mail, Grid2X2, X } from "lucide-react";
+import { Home, Map, Zap, Briefcase, Heart, Mail, Grid2X2, X, FileText } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { href: "#", label: "Home", icon: Home },
-    { href: "#journey", label: "Journey", icon: Map },
-    { href: "#skills", label: "Skills", icon: Zap },
-    { href: "#projects", label: "Projects", icon: Briefcase },
-    { href: "#interests", label: "Interests", icon: Heart },
-    { href: "#contact", label: "Contact", icon: Mail },
+    { href: "/", label: "Home", icon: Home },
+    { href: "/#journey", label: "Journey", icon: Map },
+    { href: "/#skills", label: "Skills", icon: Zap },
+    { href: "/#projects", label: "Projects", icon: Briefcase },
+    // { href: "/cv", label: "CV", icon: FileText },
+    { href: "/#interests", label: "Interests", icon: Heart },
+    { href: "/#contact", label: "Contact", icon: Mail },
   ];
 
   return (
